@@ -6,6 +6,14 @@ final class age_swiftTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(age_swift().text, "Hello, World!")
+        let age = Age()
+
+        let connection_param:[String:Any] = ["host":"127.0.0.1","port":5430, "user":"fahadzaheer", "dbname":"fahad"]
+
+        age.connect(connectionParam: connection_param, graph: "hello")
+                
+        let text = "SELECT * FROM weather;"
+        
+        age.query(statement: text, connection: age.connection!)
     }
 }
